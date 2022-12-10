@@ -129,3 +129,20 @@ def product_edit_view(request, uuid):
 
     return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['DELETE',])
+def product_delete_view(request, uuid):
+    try:
+        #   Check if product exists
+        product = Product.objects.get(uuid=uuid)
+    except Product.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    action = product.delete()
+    data = {}
+
+    #   Check if action was sucessful or not
+    if action:
+        data["success"] = "delete successful"
+    else:
+        data["failure"] = "delete failed"
+    return Response(data=data)
