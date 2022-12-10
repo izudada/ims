@@ -34,7 +34,9 @@ def product_create_view(request):
     if product_serializer.is_valid():
 
         #   save or create product
-        product_serializer.save(uuid=product_uuid)
+        product_serializer.save(
+            uuid=product_uuid, quantity_left=request.data['product']['total_quantity']
+        )
         data['product'] = product_serializer.data
 
         #   if label exist validate using label serializer
@@ -73,13 +75,57 @@ def product_detail_view(request, uuid):
     try:
         product = Product.objects.get(uuid=uuid)
         data['product'] = ProductSerializer(product).data
-
+        
         try:
-            labels = Label.objects.get(product=product)
-            data['label'] = LabelSerializer(labels).data
+            labels = Label.objects.filter(product=product).all()
+            print(labels)
+            data['label'] = LabelSerializer(labels, many=True).data
         except Exception as e:
             print(e)
 
-        return Response(data)
+        return Response(data, status=status.HTTP_200_OK)
     except Product.DoesNotExist:
         return Response(data={"error": "product does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['PUT',])
+def product_edit_view(request, uuid):
+    data = {}
+    try:
+        #   Check if product exists
+        product = Product.objects.get(uuid=uuid)
+    except Product.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    product_serializer = ProductSerializer(product, data=request.data['product'])
+
+    if product_serializer.is_valid():            
+
+        #   Block runs if label exists in the payload
+        if "label" in request.data:
+            #   Loop each label to serialize
+            for num in range(0, len(request.data['label'])):
+                #   Check if label exists
+                try:
+                    label = Label.objects.get(uuid=request.data['label'][num]['uuid'])
+                except Product.DoesNotExist:
+                    return Response(status=status.HTTP_404_NOT_FOUND)
+                
+                label_serializer = LabelSerializer(label, data=request.data['label'][num])
+                try:
+                    if label_serializer.is_valid():  
+                        #   Save Each label serializer
+                        label_serializer.save()
+                        data['label'] = label_serializer.data
+
+                except Exception as e:
+                    print(e)
+                    return Response(label_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        #   Save product serializer
+        product_serializer.save()
+        data['product'] = product_serializer.data
+
+        return Response(data, status=status.HTTP_200_OK)
+
+    return Response(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
