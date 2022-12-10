@@ -9,3 +9,5 @@ db.sqlite3
 ims/__pycache__/
  
 ims/migrations/__pycache__/
+
+   ims/tests/__pycache__/
