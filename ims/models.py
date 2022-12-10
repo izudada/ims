@@ -29,10 +29,10 @@ class Product(TrackingModel, models.Model):
 
 
 class Label(TrackingModel, models.Model):
-    product = models.ForeignKey(Product, related_name="product", on_delete= models.CASCADE)
+    product = models.ForeignKey(Product, related_name="product", on_delete= models.CASCADE, null=True)
     color = models.CharField(max_length=200, null=True)
     size = models.CharField(max_length=200, null=True)
     uuid = models.UUIDField(null=True)
 
     def __str__(self):
-        return self.uuid
+        return str(self.uuid)
