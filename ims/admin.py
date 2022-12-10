@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Label, Product
+from .models import Label, Product
 
 
 class LabelInline(admin.TabularInline):
@@ -12,5 +12,3 @@ class LabelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, LabelAdmin)
-
-admin.site.register(Category)
