@@ -5,3 +5,7 @@ env/
 config/__pycache__/
 
 db.sqlite3
+
+ims/__pycache__/
+ 
+ims/migrations/__pycache__/
