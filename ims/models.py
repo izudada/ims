@@ -17,7 +17,7 @@ class TrackingModel(models.Model):
 
 class Product(TrackingModel, models.Model):
     name = models.CharField(max_length=200, unique=True)
-    category = models.CharField(max_length=200, unique=True)
+    category = models.CharField(max_length=200)
     total_quantity = models.IntegerField(default=0)
     quantity_left = models.IntegerField(default=0)
     quantity_sold = models.IntegerField(default=0)
