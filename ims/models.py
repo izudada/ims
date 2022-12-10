@@ -24,9 +24,6 @@ class Category(TrackingModel, models.Model):
 
 
 class Product(TrackingModel, models.Model):
-    """
-        A model for products
-    """
     name = models.CharField(max_length=200)
     category = models.ForeignKey(Category, related_name="category", on_delete= models.CASCADE)
     quantity = models.IntegerField()
@@ -39,8 +36,8 @@ class Product(TrackingModel, models.Model):
 
 class Label(TrackingModel, models.Model):
     product = models.ForeignKey(Product, related_name="product", on_delete= models.CASCADE)
-    color = models.CharField(max_length=200)
-    size = models.CharField(max_length=200)
+    color = models.CharField(max_length=200, null=True)
+    size = models.CharField(max_length=200, null=True)
     uuid = models.UUIDField(null=True)
 
     def __str__(self):
