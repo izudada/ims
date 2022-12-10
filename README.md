@@ -61,3 +61,4 @@ And navigate to `http://127.0.0.1:8000/`
 ### Useful resources
 
 - [Medium](https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f) - How to use environmental values
+- [The Dumbfounds](https://www.youtube.com/watch?v=qwypH3YvMKc&t=8s) - Django Testing Tutorial
