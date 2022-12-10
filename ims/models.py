@@ -15,18 +15,12 @@ class TrackingModel(models.Model):
         ordering = ('-created_at',)
 
 
-class Category(TrackingModel, models.Model):
-    name = models.CharField(max_length=200)
-    uuid = models.UUIDField(null=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Product(TrackingModel, models.Model):
-    name = models.CharField(max_length=200)
-    category = models.ForeignKey(Category, related_name="category", on_delete= models.CASCADE)
-    quantity = models.IntegerField()
+    name = models.CharField(max_length=200, unique=True)
+    category = models.CharField(max_length=200)
+    total_quantity = models.IntegerField(default=0)
+    quantity_left = models.IntegerField(default=0)
+    quantity_sold = models.IntegerField(default=0)
     price = models.FloatField()
     uuid = models.UUIDField(null=True)
 
