@@ -1,4 +1,5 @@
 from django.db import models
+from jsonfield import JSONField
 
 
 class TrackingModel(models.Model):
@@ -22,17 +23,10 @@ class Product(TrackingModel, models.Model):
     quantity_left = models.IntegerField(default=0)
     quantity_sold = models.IntegerField(default=0)
     price = models.FloatField()
+    labels = models.JSONField(null=True)
     uuid = models.UUIDField(null=True)
 
     def __str__(self):
         return self.name
 
 
-class Label(TrackingModel, models.Model):
-    product = models.ForeignKey(Product, related_name="product", on_delete= models.CASCADE, null=True)
-    color = models.CharField(max_length=200, null=True)
-    size = models.CharField(max_length=200, null=True)
-    uuid = models.UUIDField(null=True)
-
-    def __str__(self):
-        return str(self.uuid)
