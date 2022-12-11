@@ -131,6 +131,14 @@ def product_edit_view(request, uuid):
 
 @api_view(['DELETE',])
 def product_delete_view(request, uuid):
+    """
+        Api view that deletes a product
+
+        variables:
+            - product = Product instance
+            - action = holds th e delete action/method
+            - data = return message
+    """
     try:
         #   Check if product exists
         product = Product.objects.get(uuid=uuid)
@@ -146,3 +154,14 @@ def product_delete_view(request, uuid):
     else:
         data["failure"] = "delete failed"
     return Response(data=data)
+
+
+class ProductListView(ListAPIView):
+    """
+        Api view that returns a paginated list of all products
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    pagination_class = PageNumberPagination
+    filter_backends = (SearchFilter, OrderingFilter)
+    search_fields = ('name', 'category', 'price', 'uuid')

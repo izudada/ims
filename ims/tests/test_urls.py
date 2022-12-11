@@ -5,6 +5,7 @@ from ..views import (
                         product_detail_view,
                         product_edit_view,
                         product_delete_view,
+                        ProductListView,
                     )
 from ..models import Product
 
@@ -26,3 +27,7 @@ class TestUrls(SimpleTestCase):
     def test_api_product_delete_view_resolves(self):
         url = reverse('delete_product', kwargs={'uuid':'5db86260-b895-48b2-83b4-cea28f085366'})
         self.assertEquals(resolve(url).func, product_delete_view)
+
+    def test_api_product_list_view_resolves(self):
+        url = reverse('all_product')
+        self.assertEquals(resolve(url).func.view_class, ProductListView)
