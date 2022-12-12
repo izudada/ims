@@ -61,6 +61,7 @@ class CartAPI(GenericAPIView):
     """
         Cart API for creating, retrieving, editing and removing cart and item
     """
+
     def get(self, request, *args, **kwargs):
         result = self.request.session.get('cart')
         return Response(result, status=status.HTTP_200_OK)
@@ -82,5 +83,31 @@ class CartAPI(GenericAPIView):
         result = self.request.session.get('cart')
 
         return Response(result, status=status.HTTP_201_CREATED)
-
     
+    def put(self, request, *args, **kwargs):
+        cart = self.request.session['cart']
+
+        #   Update cart if it exists
+        if 'cart' in  self.request.session:
+            for item in self.request.data:
+                product = Product.objects.get(uuid=item['product'])
+
+                #   check if cart item is in cart
+                if item['product'] in cart:
+                    cart[item['product']]['quantity'] = item['quantity']
+                    cart[item['product']]['sub_total'] =  item['quantity'] * product.price
+
+                #   Add item to cart if it doesn't exist
+                else:
+                    cart[item['product']] = {
+                        "quantity": item['quantity'],
+                        "sub_total": item['quantity'] * product.price                    
+                    }
+            
+            #   update cart items to session
+            result = self.request.session.get('cart')
+            return Response(result, status=status.HTTP_200_OK)
+
+        #   Update can't happen if no cart exists
+        else:
+            return Response({'error': 'Cart not found'}, status=status.HTTP_404_NOT_FOUND)
