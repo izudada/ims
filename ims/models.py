@@ -30,3 +30,26 @@ class Product(TrackingModel, models.Model):
         return self.name
 
 
+class Order(TrackingModel, models.Model):
+    uuid = models.UUIDField(null=True)
+    paid = models.BooleanField(default=False)
+    total = models.IntegerField()
+
+    class Meta:
+        ordering = ('-created_at',)
+
+    def __str__(self):
+        return f'{self.paid}'
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
+    price = models.IntegerField()
+    quantity = models.PositiveSmallIntegerField(default=1)
+
+    def __str__(self):
+        return str(self.id)
+
+    def get_cost(self):
+        return self.price * self.quantity

@@ -1,6 +1,6 @@
 from rest_framework.exceptions import APIException
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,6 +8,7 @@ from rest_framework import status
 from .models import Product
 from .serializers import ProductSerializer
 import uuid as my_uuid
+from rest_framework.decorators import api_view
 
 
 class ProductAPIView(ListCreateAPIView):
@@ -54,3 +55,31 @@ class ProductDetailAPIView(RetrieveUpdateDestroyAPIView):
             )
         else:
             raise APIException("Total quantity must be greater than quantity sold")
+
+
+class CartAPI(GenericAPIView):
+    """
+        Cart API for creating, retrieving, editing and removing cart and item
+    """
+    def get(self):
+        # TODO document why this method is empty
+        return {"true": True}
+
+    def post(self, request, *args, **kwargs):
+        #   Empty cart 
+        cart = {}
+
+        #   Loop request data to create cart items
+        for item in self.request.data:
+            product = Product.objects.get(uuid=item['product'])
+            cart[str(product.uuid)] = {
+                "quantity": item['quantity'],
+                "sub_total": item['quantity'] * product.price
+            }
+        
+        #   save cart items to session
+        self.request.session['cart'] = cart
+        self.request.session.modified = True
+        result = self.request.session.get('cart')
+
+        return Response(result, status=status.HTTP_201_CREATED)
