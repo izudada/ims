@@ -63,8 +63,11 @@ class CartAPI(GenericAPIView):
     """
 
     def get(self, request, *args, **kwargs):
-        result = self.request.session.get('cart')
-        return Response(result, status=status.HTTP_200_OK)
+        if 'cart' in self.request.session:
+            result = self.request.session.get('cart')
+            return Response(result, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'No existing cart'}, status=status.HTTP_404_NOT_FOUND)
 
     def post(self, request, *args, **kwargs):
         #   Empty cart 
