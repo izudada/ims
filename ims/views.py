@@ -110,4 +110,8 @@ class CartAPI(GenericAPIView):
 
         #   Update can't happen if no cart exists
         else:
-            return Response({'error': 'Cart not found'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Cart not found'}, status=status.HTTP_404_NOT_FOUND)  
+        
+    def delete(self, request, *args, **kwargs):
+        del self.request.session['cart']
+        return Response({'message': 'cart deleted successfully'},  status=status.HTTP_200_OK)
