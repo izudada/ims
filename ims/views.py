@@ -61,9 +61,9 @@ class CartAPI(GenericAPIView):
     """
         Cart API for creating, retrieving, editing and removing cart and item
     """
-    def get(self):
-        # TODO document why this method is empty
-        return {"true": True}
+    def get(self, request, *args, **kwargs):
+        result = self.request.session.get('cart')
+        return Response(result, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         #   Empty cart 
@@ -79,7 +79,8 @@ class CartAPI(GenericAPIView):
         
         #   save cart items to session
         self.request.session['cart'] = cart
-        self.request.session.modified = True
         result = self.request.session.get('cart')
 
         return Response(result, status=status.HTTP_201_CREATED)
+
+    
