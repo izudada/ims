@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Product
+from .models import Product, Order, OrderItem
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -12,5 +12,3 @@ class ProductSerializer(serializers.ModelSerializer):
             'quantity_sold': {'read_only': True},
             'created_at': {'read_only': True}
         }
-    
-

@@ -1,14 +1,14 @@
 from rest_framework.exceptions import APIException
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
+from rest_framework.decorators import api_view
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Product
+from .models import Product, Order, OrderItem
 from .serializers import ProductSerializer
 import uuid as my_uuid
-from rest_framework.decorators import api_view
 
 
 class ProductAPIView(ListCreateAPIView):
@@ -118,3 +118,40 @@ class CartAPI(GenericAPIView):
     def delete(self, request, *args, **kwargs):
         del self.request.session['cart']
         return Response({'message': 'cart deleted successfully'},  status=status.HTTP_200_OK)
+
+
+@api_view(['POST',])
+def  checkout(request):
+    """
+        This class defines the create
+        behavior of checkout api.
+    """
+    #   Check if cart exist before checking put
+    if 'cart' in request.session:
+        cart = request.session.get('cart')
+        total = [value['sub_total'] for key, value in cart.items() ]
+
+        #   Create order
+        order = Order(
+            uuid=my_uuid.uuid4(),
+            paid=True,
+            total=sum(total)
+        )
+        order.save()
+
+        #   Create order Items
+        for prod, value in cart.items():
+            product = Product.objects.get(uuid=prod)
+            item = OrderItem(
+                order=order,
+                product=product,
+                sub_total=value['sub_total'],
+                quantity=value['quantity']
+            )
+            item.save()
+
+        del request.session['cart']
+        return Response({'order': order.uuid},  status=status.HTTP_201_CREATED)
+
+    else:
+        return Response({"error": "No cart exists for checkout"},  status=status.HTTP_404_NOT_FOUND)

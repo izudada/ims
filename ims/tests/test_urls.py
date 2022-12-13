@@ -4,6 +4,7 @@ from ..views import (
                         ProductAPIView,
                         ProductDetailAPIView,
                         CartAPI,
+                        checkout
                     )
 from ..models import Product
 
@@ -21,3 +22,7 @@ class TestUrls(SimpleTestCase):
     def test_api_cart_resolves(self):
         url = reverse('cart')
         self.assertEquals(resolve(url).func.view_class, CartAPI)
+    
+    def test_api_checkout_resolves(self):
+        url = reverse('checkout')
+        self.assertEquals(resolve(url).func, checkout)
