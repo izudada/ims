@@ -26,3 +26,7 @@ class TestUrls(SimpleTestCase):
     def test_api_checkout_resolves(self):
         url = reverse('checkout')
         self.assertEquals(resolve(url).func, checkout)
+
+    def test_api_order_detail_resolves(self):
+        url = reverse('order_detail')
+        self.assertEquals(resolve(url).func, checkout)

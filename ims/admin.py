@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Product, Order, OrderItem
+from .models import Product, Order, Item
 
 
 class OrderInline(admin.TabularInline):
-    model = OrderItem
+    model = Item
 
 
 class OrderAdmin(admin.ModelAdmin):

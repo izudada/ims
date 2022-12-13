@@ -6,8 +6,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Product, Order, OrderItem
-from .serializers import ProductSerializer
+from .models import Product, Order, Item
+from .serializers import ProductSerializer, OrderSerializer, OrderItemSerializer
 import uuid as my_uuid
 
 
@@ -142,7 +142,7 @@ def  checkout(request):
         #   Create order Items
         for prod, value in cart.items():
             product = Product.objects.get(uuid=prod)
-            item = OrderItem(
+            item = Item(
                 order=order,
                 product=product,
                 sub_total=value['sub_total'],
@@ -155,3 +155,23 @@ def  checkout(request):
 
     else:
         return Response({"error": "No cart exists for checkout"},  status=status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET',])
+def order_detail(request, uuid):
+    """
+        Endpoint to get the detail of an order
+    """
+    data = {}
+    try:
+        order = Order.objects.get(uuid=uuid)
+    except Order.DoesNotExist:
+        return Response({'error: order not found'}, status=status.HTTP_404_NOT_FOUND)
+    
+    order_serializer = OrderSerializer(order)
+    data['order'] = order_serializer.data
+    items = order.get_items()
+    data['items'] = []
+    for item in items:
+        item_serializer = OrderItemSerializer(item)
+        data['items'].append(item_serializer.data)
+    return Response(data, status=status.HTTP_200_OK)

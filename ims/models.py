@@ -41,8 +41,11 @@ class Order(TrackingModel, models.Model):
     def __str__(self):
         return f'{self.paid}'
 
+    def get_items(self):
+        return self.items.all()
 
-class OrderItem(models.Model):
+
+class Item(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='order_items')
     sub_total = models.IntegerField()
