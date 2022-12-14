@@ -4,7 +4,8 @@ from .views import (
                         ProductDetailAPIView,
                         CartAPI,
                         checkout,
-                        order_detail
+                        order_detail,
+                        orders
                     )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path("products/", ProductAPIView.as_view(), name="products"),
     path("products/<str:uuid>/", ProductDetailAPIView.as_view(), name="product"),
     path("order/<str:uuid>/", order_detail, name="order"),
+    path("orders/", orders, name="orders"),
 ]

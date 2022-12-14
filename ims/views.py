@@ -175,3 +175,16 @@ def order_detail(request, uuid):
         item_serializer = OrderItemSerializer(item)
         data['items'].append(item_serializer.data)
     return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['GET',])
+def orders(request):
+    """
+        Endpoint to get all orders
+    """
+    try:
+        orders = Order.objects.filter().all()
+    except Order.DoesNotExist:
+        return Response({'error: no order record exists yet'}, status=status.HTTP_404_NOT_FOUND)
+    
+    orders_serializer = OrderSerializer(orders, many=True)
+    return Response(orders_serializer.data, status=status.HTTP_200_OK)

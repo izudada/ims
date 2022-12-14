@@ -4,7 +4,9 @@ from ..views import (
                         ProductAPIView,
                         ProductDetailAPIView,
                         CartAPI,
-                        checkout
+                        checkout,
+                        order_detail,
+                        orders
                     )
 from ..models import Product
 
@@ -28,5 +30,9 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(resolve(url).func, checkout)
 
     def test_api_order_detail_resolves(self):
-        url = reverse('order_detail')
-        self.assertEquals(resolve(url).func, checkout)
+        url = reverse('order', kwargs={'uuid': "fa3a4cc7-dd6e-46e4-9653-c981a9812db5"})
+        self.assertEquals(resolve(url).func, order_detail)
+
+    def test_api_orders_resolves(self):
+        url = reverse('orders')
+        self.assertEquals(resolve(url).func, orders)
