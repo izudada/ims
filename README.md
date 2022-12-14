@@ -58,6 +58,20 @@ Start the server with:
 And navigate to `http://127.0.0.1:8000/`
 
 
+##  Documentation
+
+Postman documentation can be found [Here](https://documenter.getpostman.com/view/20677030/2s8YzWRfwu)
+
+
+
+##  Test
+
+To run all available tests use:
+
+```sh
+(folder_name)$ python manage.py test
+```
+
 ### Useful resources
 
 - [Medium](https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f) - How to use environmental values
