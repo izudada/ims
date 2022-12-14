@@ -62,7 +62,9 @@ And navigate to `http://127.0.0.1:8000/`
 
 Postman documentation can be found [Here](https://documenter.getpostman.com/view/20677030/2s8YzWRfwu)
 
-
+### Import Postman Collection
+You can import the postman collection "Inventory Management System.postman_collection.json"
+to test the endpoints locally.
 
 ##  Test
 
