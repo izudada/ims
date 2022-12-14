@@ -1,0 +1,1171 @@
+{
+	"info": {
+		"_postman_id": "0cc17e97-3bfb-460e-bba0-ad3f468d0e1a",
+		"name": "Inventory Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20677030"
+	},
+	"item": [
+		{
+			"name": "New Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"samsung galaxy A10\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 80,\n    \"price\": 80000,\n    \"labels\": {\n        \"color\": \"blue\",\n        \"size\": \"3inch\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/products/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"samsung galaxy A10\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 80,\n    \"price\": 80000,\n    \"labels\": {\n        \"color\": \"blue\",\n        \"size\": \"3inch\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 08:25:45 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "246"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"samsung galaxy A10\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 80,\n    \"quantity_left\": 80,\n    \"price\": 80000,\n    \"labels\": {\n        \"color\": \"blue\",\n        \"size\": \"3inch\"\n    },\n    \"uuid\": \"bb05675f-d7b7-4c43-96b3-04759ea71255\",\n    \"created_at\": \"2022-12-12T08:25:45.632638Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "All Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/products/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 08:28:12 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1012"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 4,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"name\": \"samsung galaxy A10\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 80,\n            \"quantity_left\": 80,\n            \"price\": 80000,\n            \"labels\": {\n                \"color\": \"blue\",\n                \"size\": \"3inch\"\n            },\n            \"uuid\": \"bb05675f-d7b7-4c43-96b3-04759ea71255\",\n            \"created_at\": \"2022-12-12T08:25:45.632638Z\"\n        },\n        {\n            \"name\": \"iphone 11\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 10,\n            \"quantity_left\": 10,\n            \"price\": 90000,\n            \"labels\": {\n                \"color\": \"pink\",\n                \"size\": \"6inch\"\n            },\n            \"uuid\": \"61b44a38-5693-429f-b44c-6e3ce01fe281\",\n            \"created_at\": \"2022-12-12T08:01:07.201862Z\"\n        },\n        {\n            \"name\": \"iphone 13\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 80,\n            \"quantity_left\": 80,\n            \"price\": 780000,\n            \"labels\": {\n                \"color\": \"red\",\n                \"size\": \"3inch\"\n            },\n            \"uuid\": \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\",\n            \"created_at\": \"2022-12-11T19:20:03.887458Z\"\n        },\n        {\n            \"name\": \"iphone 12\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 20,\n            \"quantity_left\": 20,\n            \"price\": 780000,\n            \"labels\": {\n                \"color\": \"red\",\n                \"size\": \"4inch\"\n            },\n            \"uuid\": \"330a0d58-04d1-4cf7-8380-ce9e22990445\",\n            \"created_at\": \"2022-12-11T19:16:45.900916Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/products/330a0d58-04d1-4cf7-8380-ce9e22990445/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"330a0d58-04d1-4cf7-8380-ce9e22990445",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/330a0d58-04d1-4cf7-8380-ce9e22990445/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"330a0d58-04d1-4cf7-8380-ce9e22990445",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 09:06:41 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "256"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"iphone 12\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 60,\n    \"quantity_left\": 20,\n    \"quantity_sold\": 40,\n    \"price\": 780000,\n    \"labels\": {\n        \"color\": \"red\",\n        \"size\": \"4inch\"\n    },\n    \"uuid\": \"330a0d58-04d1-4cf7-8380-ce9e22990445\",\n    \"created_at\": \"2022-12-11T19:16:45.900916Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"iphone 12\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 90,\n    \"price\": 600000.0,\n    \"labels\": {\n        \"color\": \"red\",\n        \"size\": \"3inch\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/products/330a0d58-04d1-4cf7-8380-ce9e22990445/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"330a0d58-04d1-4cf7-8380-ce9e22990445",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Product",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"iphone 12\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 90,\n    \"price\": 600000.0,\n    \"labels\": {\n        \"color\": \"red\",\n        \"size\": \"3inch\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/330a0d58-04d1-4cf7-8380-ce9e22990445/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"330a0d58-04d1-4cf7-8380-ce9e22990445",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 09:41:54 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "256"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"iphone 12\",\n    \"category\": \"phones and tablets\",\n    \"total_quantity\": 90,\n    \"quantity_left\": 50,\n    \"quantity_sold\": 40,\n    \"price\": 600000,\n    \"labels\": {\n        \"color\": \"red\",\n        \"size\": \"3inch\"\n    },\n    \"uuid\": \"330a0d58-04d1-4cf7-8380-ce9e22990445\",\n    \"created_at\": \"2022-12-11T19:16:45.900916Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/products/123e4567-e89b-12d3-a456-426614174000/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"123e4567-e89b-12d3-a456-426614174000",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Product",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/123e4567-e89b-12d3-a456-426614174000/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"123e4567-e89b-12d3-a456-426614174000",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 10:05:38 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Search For Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/products/?search=iphone",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "iphone"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Search For Product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/?search=iphone",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "iphone"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 11:09:29 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "820"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"name\": \"iphone 11\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 10,\n            \"quantity_left\": 10,\n            \"quantity_sold\": 0,\n            \"price\": 90000,\n            \"labels\": {\n                \"color\": \"pink\",\n                \"size\": \"6inch\"\n            },\n            \"uuid\": \"61b44a38-5693-429f-b44c-6e3ce01fe281\",\n            \"created_at\": \"2022-12-12T08:01:07.201862Z\"\n        },\n        {\n            \"name\": \"iphone 13\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 80,\n            \"quantity_left\": 80,\n            \"quantity_sold\": 0,\n            \"price\": 780000,\n            \"labels\": {\n                \"color\": \"red\",\n                \"size\": \"3inch\"\n            },\n            \"uuid\": \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\",\n            \"created_at\": \"2022-12-11T19:20:03.887458Z\"\n        },\n        {\n            \"name\": \"iphone 12\",\n            \"category\": \"phones and tablets\",\n            \"total_quantity\": 90,\n            \"quantity_left\": 50,\n            \"quantity_sold\": 40,\n            \"price\": 600000,\n            \"labels\": {\n                \"color\": \"red\",\n                \"size\": \"3inch\"\n            },\n            \"uuid\": \"330a0d58-04d1-4cf7-8380-ce9e22990445\",\n            \"created_at\": \"2022-12-11T19:16:45.900916Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Cart & Items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"product\": \"61b44a38-5693-429f-b44c-6e3ce01fe281\",\n        \"quantity\": 4\n    },\n    {\n        \"product\": \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\",\n        \"quantity\": 2\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/cart/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cart",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Cart & Items",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"product\": \"61b44a38-5693-429f-b44c-6e3ce01fe281\",\n        \"quantity\": 4\n    },\n    {\n        \"product\": \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\",\n        \"quantity\": 2\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/cart/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"cart",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 13:31:48 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "152"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sessionid=4ndr749i7wdiowsjnxqfdplg3i3yx55b; expires=Mon, 26 Dec 2022 13:31:48 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"61b44a38-5693-429f-b44c-6e3ce01fe281\": {\n        \"quantity\": 4,\n        \"sub_total\": 360000\n    },\n    \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\": {\n        \"quantity\": 2,\n        \"sub_total\": 1560000\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/cart/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cart",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Cart",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/cart/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"cart",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:21:16 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "152"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"61b44a38-5693-429f-b44c-6e3ce01fe281\": {\n        \"quantity\": 4,\n        \"sub_total\": 360000\n    },\n    \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\": {\n        \"quantity\": 2,\n        \"sub_total\": 1560000\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Cart",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"product\": \"61b44a38-5693-429f-b44c-6e3ce01fe281\",\n        \"quantity\": 4\n    },\n    {\n        \"product\": \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\",\n        \"quantity\": 2\n    },\n    {\n        \"product\": \"330a0d58-04d1-4cf7-8380-ce9e22990445\",\n        \"quantity\": 2\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/products/cart/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"cart",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Cart",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"product\": \"61b44a38-5693-429f-b44c-6e3ce01fe281\",\n        \"quantity\": 4\n    },\n    {\n        \"product\": \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\",\n        \"quantity\": 2\n    },\n    {\n        \"product\": \"330a0d58-04d1-4cf7-8380-ce9e22990445\",\n        \"quantity\": 2\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/products/cart/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"cart",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:45:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "228"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"61b44a38-5693-429f-b44c-6e3ce01fe281\": {\n        \"quantity\": 4,\n        \"sub_total\": 360000\n    },\n    \"3c6460c9-0d31-4a43-ab75-ad31945b7e46\": {\n        \"quantity\": 2,\n        \"sub_total\": 1560000\n    },\n    \"330a0d58-04d1-4cf7-8380-ce9e22990445\": {\n        \"quantity\": 2,\n        \"sub_total\": 1200000\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/cart/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cart",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Cart",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products/cart/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								"cart",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 12 Dec 2022 14:53:08 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sessionid=4ndr749i7wdiowsjnxqfdplg3i3yx55b; expires=Mon, 26 Dec 2022 14:53:08 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"cart deleted successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Checkout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/cart/checkout/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cart",
+						"checkout",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Checkout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart/checkout/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"checkout",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 13 Dec 2022 13:25:31 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "sessionid=4ndr749i7wdiowsjnxqfdplg3i3yx55b; expires=Tue, 27 Dec 2022 13:25:31 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"order\": \"fa3a4cc7-dd6e-46e4-9653-c981a9812db5\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/order/fa3a4cc7-dd6e-46e4-9653-c981a9812db5/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"order",
+						"fa3a4cc7-dd6e-46e4-9653-c981a9812db5",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Order",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/fa3a4cc7-dd6e-46e4-9653-c981a9812db5/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"fa3a4cc7-dd6e-46e4-9653-c981a9812db5",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 13 Dec 2022 14:03:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "251"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"order\": {\n        \"uuid\": \"fa3a4cc7-dd6e-46e4-9653-c981a9812db5\",\n        \"paid\": true,\n        \"total\": 1920000,\n        \"created_at\": \"2022-12-13T13:25:30.711483Z\"\n    },\n    \"items\": [\n        {\n            \"order\": 8,\n            \"product\": 5,\n            \"sub_total\": 360000,\n            \"quantity\": 4\n        },\n        {\n            \"order\": 8,\n            \"product\": 4,\n            \"sub_total\": 1560000,\n            \"quantity\": 2\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "All Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/orders/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/orders/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 14 Dec 2022 11:44:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.7.5"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, GET"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "120"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"uuid\": \"fa3a4cc7-dd6e-46e4-9653-c981a9812db5\",\n        \"paid\": true,\n        \"total\": 1920000,\n        \"created_at\": \"2022-12-13T13:25:30.711483Z\"\n    }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "{{host}}",
+			"type": "string"
+		}
+	]
+}
