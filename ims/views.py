@@ -5,10 +5,9 @@ from rest_framework.decorators import api_view
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.response import Response
 from rest_framework import status
-
+import uuid as my_uuid
 from .models import Product, Order, Item
 from .serializers import ProductSerializer, OrderSerializer, OrderItemSerializer
-import uuid as my_uuid
 
 
 class ProductAPIView(ListCreateAPIView):
@@ -24,8 +23,9 @@ class ProductAPIView(ListCreateAPIView):
 
     def perform_create(self, serializer):
         return serializer.save(
-            uuid=my_uuid.uuid4(), 
-            quantity_left=serializer.validated_data['total_quantity']
+            quantity_left=serializer.validated_data.get("total_quantity"), # set qty_left as total qty
+            price=int(serializer.validated_data.get("price") * 100), #   kobo quivalence
+            uuid=my_uuid.uuid4()
         )
 
 
