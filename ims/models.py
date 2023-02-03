@@ -2,7 +2,7 @@ from django.db import models
 from jsonfield import JSONField
 
 
-class TrackingModel(models.Model):
+class TimeModel(models.Model):
     """
         Most of the models have have these two fields below as recurrent fields, 
         so to maintain a dry code it is wise to separate them this way.
@@ -10,19 +10,18 @@ class TrackingModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
     class Meta:
         abstract = True
         ordering = ('-created_at',)
 
 
-class Product(TrackingModel, models.Model):
+class Product(TimeModel):
     name = models.CharField(max_length=200, unique=True)
     category = models.CharField(max_length=200)
     total_quantity = models.IntegerField(default=0)
     quantity_left = models.IntegerField(default=0)
     quantity_sold = models.IntegerField(default=0)
-    price = models.FloatField()
+    price = models.IntegerField()
     labels = models.JSONField(null=True)
     uuid = models.UUIDField(null=True)
 
@@ -30,7 +29,7 @@ class Product(TrackingModel, models.Model):
         return self.name
 
 
-class Order(TrackingModel, models.Model):
+class Order(TimeModel):
     uuid = models.UUIDField(null=True)
     paid = models.BooleanField(default=False)
     total = models.IntegerField()
