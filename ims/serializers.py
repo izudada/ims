@@ -26,8 +26,8 @@ class ProductSerializer(serializers.ModelSerializer):
             )
             new_product.save()
             return new_product
+        
     
-
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order

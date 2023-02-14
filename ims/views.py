@@ -41,20 +41,16 @@ class ProductDetailAPIView(RetrieveUpdateDestroyAPIView):
         return Product.objects.filter(uuid=self.kwargs['uuid'])
 
     def perform_update(self, serializer):
-        # #   get product to make calculations on quantites before updating
+        #   get product to make calculations on quantites before updating
         product = Product.objects.get(uuid=self.kwargs['uuid'])
-        total_qty = self.request.data['total_quantity']
-        qty_left= total_qty - product.quantity_sold
 
-
-        #   check if new total quantity is less than quantity sold
-        if total_qty > product.quantity_sold:
-            return serializer.save(
-                total_quantity=total_qty,
-                quantity_left=qty_left
-            )
+        #   check if serilizer is valid
+        # if serializer.validated_data.get("total_quantity") 
+        if serializer.is_valid():
+            quantity_left = serializer.validated_data.get("total_quantity") - product.quantity_sold
+            return serializer.save(quantity_left=quantity_left)
         else:
-            raise APIException("Total quantity must be greater than quantity sold")
+            return Response({'error': serializer.error}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
 class CartAPI(GenericAPIView):
